@@ -66,7 +66,7 @@ jobs:
         path: |
           osrm-backend/build
           osrm-backend/mason_packages
-        key: ${{ runner.os }}-${{ steps.osrm-backend-ref.outputs.ref }}-osrm-v2
+        key: ${{ runner.os }}-${{ steps.osrm-backend-ref.outputs.ref }}-osrm-v3
     - name: Build osrm-backend
       if: steps.cache_osrm_backend_build.outputs.cache-hit != 'true'
       run: |
@@ -80,6 +80,7 @@ jobs:
         rm osrm-backend/build/libosrm*
         rm -r osrm-backend/build/flatbuffers-build
         rm -r osrm-backend/mason_packages/headers/
+        rm -r osrm-backend/mason_packages/.binaries/
         rm -r osrm-backend/third_party/
         rm -r osrm-backend/unit_tests/
         rm -r osrm-backend/src/
